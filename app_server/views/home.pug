@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  #banner.page-header
+    .row
+      .col-lg-12
+        h1 Home de CombisOnLine
+
+  .row
+    .col-lg-12
+      .input-group
+        input.form-control(type='text', placeholder='Ingrese su ubicacion', aria-label='Origen')
+        span.input-group-btn
+          button.btn.btn-secondary(type='button') Aca estoy!
+            button.btn.btn-info(type='button') Detectar donde estoy
+      .input-group
+        input.form-control(type='text', placeholder='Ingrese adonde se dirige', aria-label='Destino')
+        span.input-group-btn
+          button.btn.btn-secondary(type='button') Alla voy!
+    .container
+  .row
+    .col-sm-6
+      .form-group
+        #datetimepicker3.input-group.date
+          input.form-control(type='text')
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+    script(type='text/javascript').
+      $(function () {
+      $('#datetimepicker3').datetimepicker({
+      format: 'LT'
+      });
+      });
+  .row
+    .col-sm-6
+      .form-group
+        #datetimepicker3.input-group.date
+          input.form-control(type='text')
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+    script(type='text/javascript').
+      $(function () {
+      $('#datetimepicker3').datetimepicker({
+      format: 'LT'
+      });
+      });
+    a.btn.btn-primary(href='#') Buscar Servicios
+    a.btn.btn-primary(href='#') Ver mapa
+        
+
