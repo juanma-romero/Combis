@@ -14,5 +14,5 @@ module.exports.empresa = function (req,res) {
     res.render('empresa', {title: 'Empresa'});
 }
 module.exports.sobreCombi = function (req,res) {
-    res.render('sobreCOL', {title: 'Sobre CombisOnLine'});
+    res.render('sobreCombi', {title: 'Sobre CombisOnLine'});
 }

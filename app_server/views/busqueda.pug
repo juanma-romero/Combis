@@ -1,8 +1,11 @@
 extends layout
 
 block content
-  div
-    h1= title
-    p Bienvenido a #{title}
+  .alert.alert-primary(role="alert") Lista de servicios disponibles
 
-    
+  .list-group
+    a.list-group-item.active(href="#") Cras justo odio
+    a.list-group-item.list-group-item-action(href="#") Dapibus ac facilisis in
+    a.list-group-item.list-group-item-action(href="#") Morbi leo risus
+    a.list-group-item.list-group-item-action(href="#") Porta ac consectetur ac
+    a.list-group-item.list-group-item-action.disabled(href="#") Vestibulum at eros
