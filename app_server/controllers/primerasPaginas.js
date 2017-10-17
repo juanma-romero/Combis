@@ -2,10 +2,21 @@
 
 
 module.exports.home = function (req,res) {
-    res.render('home', {title: 'Buscar servicio'});
+    res.render('home', {
+        title: 'Buscar servicio',
+        pageHeader: {
+            title: 'Home de CombisOnLine'
+        }
+        
+    });
 }
 module.exports.busqueda = function (req,res) {
-    res.render('busqueda', {title: 'Listado de servicios'});
+    res.render('busqueda', {
+        title: 'Listado de servicios',
+        pageHeader: {
+            title: 'Listado de servicios disponibles'
+        }
+    });
 }
 module.exports.servicio = function (req,res) {
     res.render('servicio', {title: 'Servicio disponible'});

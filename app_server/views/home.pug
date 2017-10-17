@@ -1,10 +1,10 @@
 extends layout
 
 block content
-    #banner.page-header
+    #banner.page-header 
       .row
         .col-xs-12
-          h3 Home de CombisOnLine
+          h3= pageHeader.title 
 
     .container
       .row
@@ -14,8 +14,11 @@ block content
             span.input-group-btn
               button.btn.btn-secondary(type='button') Aca estoy!
       .row
-        .col-xs-4.col-xs-offset-3        
+        .col-xs-4       
           button.btn.btn-info(type='button') Detectar donde estoy
+      
+        .col-xs-4       
+          button.btn.btn-info(type='button') Marcar en mapa
       .row
         .col-xs-12  
           .input-group

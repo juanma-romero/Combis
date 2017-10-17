@@ -1,11 +1,16 @@
 body {
   padding: 5px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "roboto, Lucida Grande, Helvetica, Arial, sans-serif";
   height: 100%;
 }
 
 a {
   color: #00B7FF;
+}
+
+div {
+  padding-bottom: 3px;
+  padding-right: 3px;
 }
 
 
