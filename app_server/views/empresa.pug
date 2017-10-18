@@ -16,10 +16,20 @@ block content
       center: posicion,
       zoom: 15
       });
-      var marker = new google.maps.Marker({
+      /*var marker = new google.maps.Marker({
       position: posicion,
       map: map,
       title: 'Hello World!'
-      });
+      });*/
+      var infoWindow = new google.maps.InfoWindow({map: map});
+                
+      navigator.geolocation.getCurrentPosition(function(position) {
+      var pos= {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+      };
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('otra cosa!');
+      })
       }
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpI1dm4HaiIrP5v4B9SNtQ6xdJxNlhwWs&v=3&callback=initMap")
