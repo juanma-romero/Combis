@@ -2,34 +2,26 @@ extends layout
 
 block content
   .container
-    .row
-        .col-xs-4       
-          button.btn.btn-info(action='https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCpI1dm4HaiIrP5v4B9SNtQ6xdJxNlhwWs', method='POST',type='button') Detectar donde estoy
-  .container
-    .row
+    #locationField
+      input(placeholder="Enter your address", onFocus="geolocate()" type="text")
+  
     div#mapa
     script.
-      var map, posicion;
-      function initMap() {
-      posicion= {lat: -35.603889, lng: -58.382533};
-      map = new google.maps.Map(document.getElementById('mapa'), {
-      center: posicion,
-      zoom: 15
-      });
-      /*var marker = new google.maps.Marker({
-      position: posicion,
-      map: map,
-      title: 'Hello World!'
-      });*/
-      var infoWindow = new google.maps.InfoWindow({map: map});
-                
+      var map, pos;
+      var cidCampeador= {lat: -34.608153, lng: -58.443618};
       navigator.geolocation.getCurrentPosition(function(position) {
-      var pos= {
+      pos = {
       lat: position.coords.latitude,
-      lng: position.coords.longitude
-      };
+      lng: position.coords.longitude}
+      });
+      function initMap() {      
+      map = new google.maps.Map(document.getElementById('mapa'), {
+      center: cidCampeador,
+      zoom: 15
+      });      
+      var infoWindow = new google.maps.InfoWindow({map: map});      
       infoWindow.setPosition(pos);
       infoWindow.setContent('otra cosa!');
-      })
       }
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpI1dm4HaiIrP5v4B9SNtQ6xdJxNlhwWs&v=3&callback=initMap")
+    

@@ -1,11 +1,6 @@
 extends layout
 
 block content
-    #banner.page-header 
-      .row
-        .col-xs-12
-          h3= pageHeader.title 
-
     .container
       .row
         .col-xs-12
@@ -15,10 +10,10 @@ block content
               button.btn.btn-secondary(type='button') Aca estoy!
       .row
         .col-xs-4       
-          button.btn.btn-info(type='button') Detectar donde estoy
+          button.btn.btn-info.btn-sm(type='button') Detectar donde estoy
       
         .col-xs-4       
-          button.btn.btn-info(type='button') Marcar en mapa
+          button.btn.btn-info.btn-sm(type='button') Marcar en mapa
       .row
         .col-xs-12  
           .input-group
@@ -26,34 +21,18 @@ block content
             span.input-group-btn
               button.btn.btn-secondary(type='button') Alla voy!
       .row
-        .col-xs-3
-          .form-group
-            #datetimepicker3.input-group.date
-              input.form-control(type='text')
-              span.input-group-addon
-                span.glyphicon.glyphicon-time
-        
-        .col-xs-3
-          .form-group
-            #datetimepicker3.input-group.date
-              input.form-control(type='text')
-              span.input-group-addon
-                span.glyphicon.glyphicon-time
-        
-      .row
-        .col-sm-4
-          button.btn.btn-primary Buscar Servicios
-    .container
-      .row
-        .col-sm-4  
-          button.btn.btn-primary(type="button", data-toggle="collapse", data-target="#mapa", aria-expanded="false", aria-controls="mapa") Ver/Ocultar mapa
-
-      div.collapse#mapa
+        .col-xs-4
+          button.btn.btn-primary.btn-sm fecha/hora
+        .col-xs-4
+          button.btn.btn-primary.btn-sm Buscar Servicios    
+      div#mapa
       script.
         var map;
+        var cidCampeador= {lat: -34.608153, lng: -58.443618};
+        
         function initMap() {
           map = new google.maps.Map(document.getElementById('mapa'), {
-          center: {lat: -34.603889, lng: -58.382333},
+          center: cidCampeador,
           zoom: 15
           });
         } 
