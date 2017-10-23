@@ -4,39 +4,22 @@ block content
     .container
       .row
         .col-xs-12
-          .input-group
-            input.form-control(type='text', placeholder='Ingrese su ubicacion', aria-label='Origen')
-            span.input-group-btn
-              button.btn.btn-secondary(type='button') Aca estoy!
+          input.form-control#pac-input(placeholder="Ingrese origen", type="text")
       .row
-        .col-xs-4       
+        .col-xs-6       
           button.btn.btn-info.btn-sm(type='button') Detectar donde estoy
       
-        .col-xs-4       
+        .col-xs-6       
           button.btn.btn-info.btn-sm(type='button') Marcar en mapa
       .row
         .col-xs-12  
-          .input-group
-            input.form-control(type='text', placeholder='Ingrese adonde se dirige', aria-label='Destino')
-            span.input-group-btn
-              button.btn.btn-secondary(type='button') Alla voy!
+          input.form-control#pac-input(placeholder="Ingrese destino", type="text")
       .row
-        .col-xs-4
+        .col-xs-6
           button.btn.btn-primary.btn-sm fecha/hora
-        .col-xs-4
+        .col-xs-6
           button.btn.btn-primary.btn-sm Buscar Servicios    
-      div#mapa
-      script.
-        var map;
-        var cidCampeador= {lat: -34.608153, lng: -58.443618};
-        
-        function initMap() {
-          map = new google.maps.Map(document.getElementById('mapa'), {
-          center: cidCampeador,
-          zoom: 15
-          });
-        } 
-        
-      script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpI1dm4HaiIrP5v4B9SNtQ6xdJxNlhwWs&v=3&callback=initMap")
-              
-
+      div#map
+      script
+        include logicaMapas.js
+      script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpI1dm4HaiIrP5v4B9SNtQ6xdJxNlhwWs&v=3&libraries=places&callback=initMap")

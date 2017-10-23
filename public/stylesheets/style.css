@@ -18,12 +18,12 @@ button, input {
 container {
   padding: 2px;
 }
-#mapa {
+#map {
   width: 100%;
   height: 350px;
 }
 @media (min-width: 500px) {
-  #mapa {
+  #map {
     height: 450px;
     }  
   }
