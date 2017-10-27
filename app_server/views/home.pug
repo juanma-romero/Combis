@@ -3,22 +3,28 @@ extends layout
 block content
     .container
       .row
-        .col-xs-12
-          input.form-control#pac-input(placeholder="Ingrese origen", type="text")
+        .form-group
+          .input-group
+            input.form-control#pac-input1(placeholder="Ingrese origen", type="text")
+            button.btn.btn-success.input-group-addon
+              i.material-icons done
+            button.btn.btn-danger.input-group-addon
+              i.material-icons cancel              
+        button.btn.btn-info(id='autodetectar', type='button') Donde estoy?        
       .row
-        .col-xs-6       
-          button.btn.btn-info.btn-sm(id='autodetectar', type='button') Detectar donde estoy
-      
-        .col-xs-6       
-          button.btn.btn-info.btn-sm(type='button') Marcar en mapa
-      .row
-        .col-xs-12  
-          input.form-control#pac-input(placeholder="Ingrese destino", type="text")
+        .form-group
+          .input-group
+            input.form-control#pac-input2(placeholder="Ingrese destino", type="text")
+            button.btn.btn-success.input-group-addon
+              i.material-icons done  
+            button.btn.btn-danger.input-group-addon
+              i.material-icons cancel          
       .row
         .col-xs-6
           button.btn.btn-primary.btn-sm fecha/hora
         .col-xs-6
-          button.btn.btn-primary.btn-sm Buscar Servicios    
+          button.btn.btn-primary.btn-sm Buscar Servicios
+         
       div#map
       script
         include logicaMapas.js
