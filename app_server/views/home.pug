@@ -2,24 +2,24 @@ extends layout
 
 block content
     .container
-      .row
-        .form-group
-          .input-group
-            input.form-control#pac-input1(placeholder="Ingrese origen", type="text")
+      .row#Origen
+        .form-group#formOrigen
+          .input-group#InputOrigen
+            input.form-control#origin-input(placeholder="Ingrese origen", type="text")
             button.btn.btn-success.input-group-addon
               i.material-icons done
             button.btn.btn-danger.input-group-addon
               i.material-icons cancel              
         button.btn.btn-info(id='autodetectar', type='button') Donde estoy?        
-      .row
+      .row#Destino
         .form-group
           .input-group
-            input.form-control#pac-input2(placeholder="Ingrese destino", type="text")
+            input.form-control#destination-input(placeholder="Ingrese destino", type="text")
             button.btn.btn-success.input-group-addon
               i.material-icons done  
             button.btn.btn-danger.input-group-addon
               i.material-icons cancel          
-      .row
+      .row#FechaHora
         .col-xs-6
           button.btn.btn-primary.btn-sm fecha/hora
         .col-xs-6
@@ -27,5 +27,6 @@ block content
          
       div#map
       script
-        include logicaMapas.js
+        include ../controllers/logicaMapas.js
+        
       script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpI1dm4HaiIrP5v4B9SNtQ6xdJxNlhwWs&v=3&libraries=places&callback=initMap")

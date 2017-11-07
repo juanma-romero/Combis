@@ -22,8 +22,26 @@ container {
   width: 100%;
   height: 350px;
 }
+#autodetectar {
+  padding-bottom: 0px;
+  padding-top: 0px; 
+}
+#formOrigen {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+#InputOrigen {
+  padding-bottom: 0px;
+}
+#Origen {
+  margin-bottom: 5px;
+  border: 1px solid #66afe9 
+}
+#Destino{
+  border: 1px solid #5cb85c
+}
 @media (min-width: 500px) {
   #map {
     height: 450px;
-    }  
+    }
   }

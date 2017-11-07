@@ -1,8 +1,9 @@
 var map, pos;
+var consulta={};
 //var infowindow = null;
 var marcadorDirecto;
 var cidCampeador= {lat: -34.607576, lng: -58.445711};
-
+var markers = [];
 
 function initMap() {
 
@@ -16,10 +17,7 @@ function initMap() {
   //geolocation
   function autodetectarFunction() {
     var marcadorAutodetectar= new google.maps.Marker({map: map, position: null});
-
-          //var infoWindow = new google.maps.InfoWindow({map: map});
-
-        // Try HTML5 geolocation.
+                  // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -28,9 +26,6 @@ function initMap() {
       };
       marcadorAutodetectar.setPosition(pos);
       marcadorAutodetectar.setMap(map);
-      //infoWindow.setPosition(pos);
-      //infoWindow.setContent('Estas acá!');
-      
       map.setCenter(pos);
       }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
@@ -58,10 +53,10 @@ function initMap() {
   }
   startButtonEvents();
 
+  
 
 
-
-
+/*
   // SearchBox 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input1');
@@ -126,7 +121,7 @@ function initMap() {
   map.fitBounds(bounds);
   }
   );
-
+*/
 
   // devuelve posicion seleccionada por usuario directo en mapa
 
@@ -140,7 +135,72 @@ function initMap() {
     });
   });
 
+  new AutocompleteDirectionsHandler(map);
   //cierra initMap
-
 }
 
+function AutocompleteDirectionsHandler(map) {
+  this.map = map;
+  this.originPlaceId = null;
+  this.destinationPlaceId = null;
+  
+  var originInput = document.getElementById('origin-input');
+  var destinationInput = document.getElementById('destination-input');
+
+      // configura autocomplete
+  var defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-40.91351257612757,-63.314208984375),
+    new google.maps.LatLng(-33.30298618122412,-56.810302734375));
+
+  var optionsAuto = {
+    bounds: defaultBounds,
+    componentRestrictions: {country: 'ar'},
+    placeIdOnly: true
+  };
+      // inicia Autocomplete
+  var originAutocomplete = new google.maps.places.Autocomplete(
+      originInput, optionsAuto);
+  var destinationAutocomplete = new google.maps.places.Autocomplete(
+      destinationInput, optionsAuto);
+
+  
+
+  this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+  this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+  
+}
+AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+  var me = this;
+  autocomplete.bindTo('bounds', this.map);
+  autocomplete.addListener('place_changed', function() {
+    var place = autocomplete.getPlace();
+    if (!place.place_id) {
+      window.alert("Seleccione una dirección de la lista ");
+      return;
+    }
+    if (mode === 'ORIG') {
+      me.originPlaceId = place.place_id;
+    } else {
+      me.destinationPlaceId = place.place_id;
+    }
+    
+  });
+  /*markers.forEach(function(marker) {
+    marker.setMap(null);
+    });
+  markers = [];
+  // Clear out the old markers.
+  markers.forEach(function(marker) {
+    marker.setMap(null);
+    });
+    // Create a marker for each place.
+
+  markers.push(new google.maps.Marker({
+    map: map,
+    title: place.name,
+    position: place.geometry.location
+    })
+  );*/
+
+};
